@@ -115,9 +115,9 @@ function clean() {
   return del(path.clean);
 }
 function fonts() {
-  return src(path.src.fonts, { base: srcPath + "fonts/" }).pipe(
-    browserSync.reload({ stream: true })
-  );
+  return src(path.src.fonts, { base: srcPath + "fonts/" })
+    .pipe(dest(path.build.fonts))
+    .pipe(browserSync.reload({ stream: true }));
 }
 
 function watchFiles() {
