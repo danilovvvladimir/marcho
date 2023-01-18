@@ -1,3 +1,6 @@
-console.log("It works");
-console.log(2);
-alert(1);
+$(function () {
+  $(".top-slider__inner").slick({
+    dots: true,
+    arrows: false,
+  });
+});

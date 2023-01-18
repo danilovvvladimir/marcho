@@ -28,3 +28,16 @@ a {
   color: $default;
   @extend %quicksand-500;
 }
+
+.btn {
+  padding: 14px 35px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: $accent;
+  color: #fff;
+  @extend %roboto-400;
+  letter-spacing: 2px;
+  border: none;
+  box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+  cursor: pointer;
+}

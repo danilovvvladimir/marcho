@@ -1,5 +1,6 @@
 @import "vars";
 @import "reset";
+@import "libs";
 @import "fonts";
 @import "global";
 
@@ -149,18 +150,10 @@
     }
   }
   &__form-btn {
-    @extend %roboto-400;
     font-size: 16px;
     line-height: 36px;
-    letter-spacing: 2px;
-    border: none;
-    background-color: $accent;
-    color: #fff;
-    text-transform: uppercase;
     padding: 7px 16px 7px 16px;
     margin-left: 10px;
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
-    cursor: pointer;
   }
 }
 
@@ -178,6 +171,25 @@
     &-img {
       margin-left: 20px;
     }
+  }
+}
+
+.top-slider {
+  padding-top: 65px;
+  background-color: $bg;
+  &__title {
+    color: $title;
+    max-width: 670px;
+    @extend %roboto-700;
+    font-size: 58px;
+    line-height: 68px;
+    margin-bottom: 35px;
+  }
+  &__text {
+    margin-bottom: 55px;
+    max-width: 470px;
+  }
+  &__link {
   }
 }
 

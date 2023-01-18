@@ -9,6 +9,7 @@ const cssnano = require("gulp-cssnano");
 const uglify = require("gulp-uglify");
 const panini = require("panini");
 const imagemin = require("gulp-imagemin");
+const concat = require("gulp-concat");
 const del = require("del");
 const browserSync = require("browser-sync").create();
 
@@ -35,7 +36,7 @@ const path = {
   watch: {
     html: srcPath + "**/*.html",
     css: srcPath + "scss/**/*.scss",
-    js: srcPath + "js/**/*.js",
+    js: srcPath + "js/**/script.js",
     images: srcPath + "images/**/*.{jpeg, jpg, png, svg}",
     fonts: srcPath + "fonts/**/*.{eot, woff,woff2,ttf,svg}",
   },
@@ -84,17 +85,24 @@ function css() {
     .pipe(dest(path.build.css));
 }
 function js() {
-  return src(path.src.js, { base: srcPath + "js/" })
-    .pipe(dest(path.build.js))
-    .pipe(uglify())
-    .pipe(
-      rename({
-        suffix: ".min",
-        extname: ".js",
-      })
-    )
-    .pipe(dest(path.build.js))
-    .pipe(browserSync.reload({ stream: true }));
+  return (
+    src([
+      "node_modules/jquery/dist/jquery.min.js",
+      "node_modules/slick-carousel/slick/slick.min.js",
+      path.src.js,
+    ])
+      .pipe(concat("main.min.js"))
+      .pipe(uglify())
+      .pipe(dest(srcPath + "/js/"))
+      // .pipe(
+      //   rename({
+      //     suffix: ".min",
+      //     extname: ".js",
+      //   })
+      // )
+      .pipe(dest(path.build.js))
+      .pipe(browserSync.reload({ stream: true }))
+  );
 }
 function images() {
   return src(path.src.images, { base: srcPath + "images/" })
@@ -114,28 +122,38 @@ function images() {
 function clean() {
   return del(path.clean);
 }
+function cleanJs() {
+  return del(srcPath + "js/*.min.js");
+}
 function fonts() {
   return src(path.src.fonts, { base: srcPath + "fonts/" })
     .pipe(dest(path.build.fonts))
     .pipe(browserSync.reload({ stream: true }));
 }
+const jsFull = gulp.series(cleanJs, js);
 
 function watchFiles() {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
-  gulp.watch([path.watch.js], js);
+  gulp.watch([path.watch.js], jsFull);
   gulp.watch([path.watch.images], images);
   gulp.watch([path.watch.fonts], fonts);
 }
 
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
+const build = gulp.series(
+  clean,
+
+  gulp.parallel(html, css, jsFull, images, fonts)
+);
 const watch = gulp.parallel(build, watchFiles, serve);
 
 exports.html = html;
 exports.css = css;
 exports.js = js;
+exports.jsFull = jsFull;
 exports.images = images;
 exports.clean = clean;
+exports.cleanJs = cleanJs;
 exports.fonts = fonts;
 exports.build = build;
 exports.watch = watch;
