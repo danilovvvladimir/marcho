@@ -30,15 +30,15 @@ const path = {
     scss: srcPath + "scss/*.scss",
     css: srcPath + "css/",
     js: srcPath + "js/*.js",
-    images: srcPath + "images/**/*.{jpeg, jpg, png, svg}",
+    images: srcPath + "images/**/*.*",
     fonts: srcPath + "fonts/**/*.{eot, woff,woff2,ttf,svg}",
   },
   watch: {
     html: srcPath + "**/*.html",
     css: srcPath + "scss/**/*.scss",
     js: srcPath + "js/**/script.js",
-    images: srcPath + "images/**/*.{jpeg, jpg, png, svg}",
-    fonts: srcPath + "fonts/**/*.{eot, woff,woff2,ttf,svg}",
+    images: srcPath + "images/**/*.{jpeg,jpg,png,svg}",
+    fonts: srcPath + "fonts/**/*.{eot,woff,woff2,ttf,svg}",
   },
   clean: "./" + distPath,
 };
@@ -105,19 +105,21 @@ function js() {
   );
 }
 function images() {
-  return src(path.src.images, { base: srcPath + "images/" })
-    .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 80, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
-        imagemin.svgo({
-          plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
-        }),
-      ])
-    )
-    .pipe(dest(path.build.images))
-    .pipe(browserSync.reload({ stream: true }));
+  return (
+    src(path.src.images, { base: srcPath + "images/" })
+      // .pipe(
+      //   imagemin([
+      //     imagemin.gifsicle({ interlaced: true }),
+      //     imagemin.mozjpeg({ quality: 80, progressive: true }),
+      //     imagemin.optipng({ optimizationLevel: 5 }),
+      //     imagemin.svgo({
+      //       plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+      //     }),
+      //   ])
+      // )
+      .pipe(dest(path.build.images))
+      .pipe(browserSync.reload({ stream: true }))
+  );
 }
 function clean() {
   return del(path.clean);
