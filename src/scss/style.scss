@@ -414,10 +414,11 @@
 .product {
   padding: 105px 0 120px 0;
   text-align: center;
+
   &__items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 45px 30px;
+    // grid-gap: 45px 30px;
     margin-bottom: 55px;
   }
   &__link {
@@ -541,6 +542,75 @@
       border: none;
       box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
     }
+  }
+}
+
+.promo {
+  padding: 150px 0 160px;
+  background-image: url(../images/promo-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  background-position: center center;
+  &__inner {
+    max-width: 570px;
+    width: 100%;
+    margin-left: auto;
+  }
+  &__subtitle {
+    color: $accent;
+    text-transform: uppercase;
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  &__title {
+    margin-bottom: 60px;
+  }
+  &__clock {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    &-item {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 0px 10px 40px 0px rgba(187, 187, 187, 0.3);
+      padding-top: 10px;
+      span {
+        @extend %roboto-500;
+        font-size: 48px;
+        color: $title;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  &__link {
+    text-transform: uppercase;
+    color: $title;
+    border: 1px solid $accent;
+    padding: 14px 25px;
+    display: inline-block;
+    @extend %roboto-400;
+    letter-spacing: 3px;
+    transition: 0.3s all;
+    &:hover {
+      background-color: $accent;
+      color: #fff;
+    }
+  }
+}
+.partners {
+  padding-top: 75px;
+  &__list {
+    height: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
