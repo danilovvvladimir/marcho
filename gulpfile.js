@@ -89,6 +89,7 @@ function js() {
     src([
       "node_modules/jquery/dist/jquery.min.js",
       "node_modules/slick-carousel/slick/slick.min.js",
+      "src/js/jquery.star-rating-svg.js",
       "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js",
       path.src.js,
     ])
