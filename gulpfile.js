@@ -89,6 +89,7 @@ function js() {
     src([
       "node_modules/jquery/dist/jquery.min.js",
       "node_modules/slick-carousel/slick/slick.min.js",
+      "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js",
       path.src.js,
     ])
       .pipe(concat("main.min.js"))
@@ -118,7 +119,6 @@ function images() {
       //   ])
       // )
       .pipe(dest(path.build.images))
-      .pipe(browserSync.reload({ stream: true }))
   );
 }
 function clean() {
