@@ -28,3 +28,35 @@ a {
   color: $default;
   @extend %quicksand-500;
 }
+
+.btn {
+  padding: 12px 26px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: $accent;
+  color: #fff;
+  @extend %roboto-400;
+  letter-spacing: 2px;
+  border: none;
+  box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  @extend %roboto-700;
+  font-size: 48px;
+  line-height: 26px;
+  color: $title;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+.jq-star {
+  cursor: default;
+}
+
+.subtitle {
+  text-align: center;
+  max-width: 570px;
+  margin: 0 auto 55px auto;
+}

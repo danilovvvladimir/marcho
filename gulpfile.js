@@ -9,6 +9,7 @@ const cssnano = require("gulp-cssnano");
 const uglify = require("gulp-uglify");
 const panini = require("panini");
 const imagemin = require("gulp-imagemin");
+const concat = require("gulp-concat");
 const del = require("del");
 const browserSync = require("browser-sync").create();
 
@@ -29,15 +30,15 @@ const path = {
     scss: srcPath + "scss/*.scss",
     css: srcPath + "css/",
     js: srcPath + "js/*.js",
-    images: srcPath + "images/**/*.{jpeg, jpg, png, svg}",
+    images: srcPath + "images/**/*.*",
     fonts: srcPath + "fonts/**/*.{eot, woff,woff2,ttf,svg}",
   },
   watch: {
     html: srcPath + "**/*.html",
     css: srcPath + "scss/**/*.scss",
-    js: srcPath + "js/**/*.js",
-    images: srcPath + "images/**/*.{jpeg, jpg, png, svg}",
-    fonts: srcPath + "fonts/**/*.{eot, woff,woff2,ttf,svg}",
+    js: srcPath + "js/**/script.js",
+    images: srcPath + "images/**/*.{jpeg,jpg,png,svg}",
+    fonts: srcPath + "fonts/**/*.{eot,woff,woff2,ttf,svg}",
   },
   clean: "./" + distPath,
 };
@@ -84,58 +85,78 @@ function css() {
     .pipe(dest(path.build.css));
 }
 function js() {
-  return src(path.src.js, { base: srcPath + "js/" })
-    .pipe(dest(path.build.js))
-    .pipe(uglify())
-    .pipe(
-      rename({
-        suffix: ".min",
-        extname: ".js",
-      })
-    )
-    .pipe(dest(path.build.js))
-    .pipe(browserSync.reload({ stream: true }));
+  return (
+    src([
+      "node_modules/jquery/dist/jquery.min.js",
+      "node_modules/slick-carousel/slick/slick.min.js",
+      "src/js/jquery.star-rating-svg.js",
+      "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js",
+      path.src.js,
+    ])
+      .pipe(concat("main.min.js"))
+      .pipe(uglify())
+      .pipe(dest(srcPath + "/js/"))
+      // .pipe(
+      //   rename({
+      //     suffix: ".min",
+      //     extname: ".js",
+      //   })
+      // )
+      .pipe(dest(path.build.js))
+      .pipe(browserSync.reload({ stream: true }))
+  );
 }
 function images() {
-  return src(path.src.images, { base: srcPath + "images/" })
-    .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 80, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
-        imagemin.svgo({
-          plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
-        }),
-      ])
-    )
-    .pipe(dest(path.build.images))
-    .pipe(browserSync.reload({ stream: true }));
+  return (
+    src(path.src.images, { base: srcPath + "images/" })
+      // .pipe(
+      //   imagemin([
+      //     imagemin.gifsicle({ interlaced: true }),
+      //     imagemin.mozjpeg({ quality: 80, progressive: true }),
+      //     imagemin.optipng({ optimizationLevel: 5 }),
+      //     imagemin.svgo({
+      //       plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+      //     }),
+      //   ])
+      // )
+      .pipe(dest(path.build.images))
+  );
 }
 function clean() {
   return del(path.clean);
+}
+function cleanJs() {
+  return del(srcPath + "js/*.min.js");
 }
 function fonts() {
   return src(path.src.fonts, { base: srcPath + "fonts/" })
     .pipe(dest(path.build.fonts))
     .pipe(browserSync.reload({ stream: true }));
 }
+const jsFull = gulp.series(cleanJs, js);
 
 function watchFiles() {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
-  gulp.watch([path.watch.js], js);
+  gulp.watch([path.watch.js], jsFull);
   gulp.watch([path.watch.images], images);
   gulp.watch([path.watch.fonts], fonts);
 }
 
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
+const build = gulp.series(
+  clean,
+
+  gulp.parallel(html, css, jsFull, images, fonts)
+);
 const watch = gulp.parallel(build, watchFiles, serve);
 
 exports.html = html;
 exports.css = css;
 exports.js = js;
+exports.jsFull = jsFull;
 exports.images = images;
 exports.clean = clean;
+exports.cleanJs = cleanJs;
 exports.fonts = fonts;
 exports.build = build;
 exports.watch = watch;
