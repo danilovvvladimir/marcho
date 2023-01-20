@@ -1,4 +1,36 @@
 $(function () {
+  const colorCheckboxes = document.querySelectorAll(".filter-color__input");
+  const sizeCheckboxes = document.querySelectorAll(".filter-size__input");
+  const colorText = document.querySelectorAll(".filter-color__text");
+  const sizeText = document.querySelectorAll(".filter-size__label");
+
+  colorCheckboxes.forEach((item, index) => {
+    console.log(item.checked);
+    item.addEventListener("click", () => {
+      colorText[index].classList.toggle("filter-color__text--active");
+    });
+  });
+
+  // sizeCheckboxes.forEach((item, index) => {
+  //   console.log(item.checked);
+  //   item.addEventListener("click", () => {
+  //     sizeText[index].classList.toggle("filter-color__label--active");
+  //   });
+  // });
+
+  $(".filter-price__input").ionRangeSlider({
+    type: "double",
+    prefix: "$",
+    onStart: function (data) {
+      $(".filter-price__from").text(data.from);
+      $(".filter-price__to").text(data.to);
+    },
+    onChange: function (data) {
+      $(".filter-price__from").text(data.from);
+      $(".filter-price__to").text(data.to);
+    },
+  });
+
   $(".top-slider__inner").slick({
     dots: true,
     arrows: false,
