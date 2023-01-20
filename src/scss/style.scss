@@ -739,6 +739,7 @@
     color: $accent;
   }
   &__label {
+    @extend %quicksand-500;
     display: block;
     margin-bottom: 30px;
   }
@@ -766,6 +767,9 @@
     display: inline-block;
     margin-top: 12px;
     color: $accent;
+  }
+  &__text {
+    margin-bottom: 25px;
   }
 }
 
