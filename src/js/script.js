@@ -1,22 +1,32 @@
 $(function () {
+  $(".shop-content__filter-btn").on("click", function () {
+    $(".shop-content__filter-btn").removeClass(
+      "shop-content__filter-btn--active"
+    );
+    $(this).addClass("shop-content__filter-btn--active");
+  });
+
+  $(".btn-list").on("click", function () {
+    $(".product-item").addClass("product-item--list");
+  });
+  $(".btn-grid").on("click", function () {
+    $(".product-item").removeClass("product-item--list");
+  });
+
   const colorCheckboxes = document.querySelectorAll(".filter-color__input");
   const sizeCheckboxes = document.querySelectorAll(".filter-size__input");
   const colorText = document.querySelectorAll(".filter-color__text");
   const sizeText = document.querySelectorAll(".filter-size__label");
 
-  colorCheckboxes.forEach((item, index) => {
-    console.log(item.checked);
-    item.addEventListener("click", () => {
-      colorText[index].classList.toggle("filter-color__text--active");
+  if (colorCheckboxes !== undefined) {
+    colorCheckboxes.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        colorText[index].classList.toggle("filter-color__text--active");
+      });
     });
-  });
+  }
 
-  // sizeCheckboxes.forEach((item, index) => {
-  //   console.log(item.checked);
-  //   item.addEventListener("click", () => {
-  //     sizeText[index].classList.toggle("filter-color__label--active");
-  //   });
-  // });
+  $(".select-style").styler();
 
   $(".filter-price__input").ionRangeSlider({
     type: "double",
