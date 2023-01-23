@@ -337,8 +337,229 @@
               </div>
             </div>
           </div>
-          <div class="product-tabs"></div>
-          <div class="product-revies"></div>
+          <div class="product-tabs">
+            <div class="product-tabs__top">
+              <a class="product-tabs__top-item">Description</a>
+              <a class="product-tabs__top-item">Additional information</a>
+              <a class="product-tabs__top-item product-tabs__top-item--active"
+                >Reviews</a
+              >
+            </div>
+            <div class="product-tabs__content">
+              <div class="product-tabs__content-item">content1</div>
+              <div class="product-tabs__content-item">content2</div>
+              <div
+                class="product-tabs__content-item product-tabs__content-item--active">
+                <div class="comments">
+                  <img
+                    src="./images/avatar/1.jpg"
+                    alt="avatar"
+                    class="comments__img" />
+                  <div class="comments__content">
+                    <div class="comments__content-top">
+                      <p class="comments__content-name">Michle Jhon</p>
+                      <p class="comments__content-date">2 days ago</p>
+                      <div
+                        class="comments__content-star star"
+                        data-rating="4"></div>
+                    </div>
+                    <p class="comments__content-text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Qus ipsum speissei ultrices gravida. Risus commodo
+                      viverra maeenas accumsan lacus vel facilisis.
+                    </p>
+                    <a href="#" class="comments__content-reply">Reply</a>
+                  </div>
+                </div>
+                <div class="comments">
+                  <img
+                    src="./images/avatar/2.jpg"
+                    alt="avatar"
+                    class="comments__img" />
+                  <div class="comments__content">
+                    <div class="comments__content-top">
+                      <p class="comments__content-name">Michle Jhon</p>
+                      <p class="comments__content-date">2 days ago</p>
+                      <div
+                        class="comments__content-star star"
+                        data-rating="4"></div>
+                    </div>
+                    <p class="comments__content-text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Qus ipsum speissei ultrices gravida. Risus commodo
+                      viverra maeenas accumsan lacus vel facilisis.
+                    </p>
+                    <a href="#" class="comments__content-reply">Reply</a>
+                  </div>
+                </div>
+                <div class="comments">
+                  <img
+                    src="./images/avatar/3.jpg"
+                    alt="avatar"
+                    class="comments__img" />
+                  <div class="comments__content">
+                    <div class="comments__content-top">
+                      <p class="comments__content-name">Michle Jhon</p>
+                      <p class="comments__content-date">2 days ago</p>
+                      <div
+                        class="comments__content-star star"
+                        data-rating="4"></div>
+                    </div>
+                    <p class="comments__content-text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Qus ipsum speissei ultrices gravida. Risus commodo
+                      viverra maeenas accumsan lacus vel facilisis.
+                    </p>
+                    <a href="#" class="comments__content-reply">Reply</a>
+                  </div>
+                </div>
+                <form action="#" class="comments-form">
+                  <p class="comments-form__title">Add your review</p>
+                  <div class="comments-form__rating">
+                    <span class="comments-form__rating-title">Your rating</span>
+                    <label class="comments-form__label">
+                      <input
+                        type="radio"
+                        class="comments-form__input"
+                        name="rating" />
+                      <span class="comments-form__radio">
+                        <div
+                          class="comments-form__star comments-form__star--1"
+                          data-rating="1"
+                          totalStars="1"></div>
+                      </span>
+                    </label>
+                    <label class="comments-form__label">
+                      <input
+                        type="radio"
+                        class="comments-form__input"
+                        name="rating" />
+                      <span class="comments-form__-radio">
+                        <div
+                          class="comments-form__star comments-form__star--2"
+                          data-rating="2"></div>
+                      </span>
+                    </label>
+                    <label class="comments-form__label">
+                      <input
+                        type="radio"
+                        class="comments-form__input"
+                        name="rating" />
+                      <span class="comments-form__radio">
+                        <div
+                          class="comments-form__star comments-form__star--3"
+                          data-rating="3"></div>
+                      </span>
+                    </label>
+                    <label class="comments-form__label">
+                      <input
+                        type="radio"
+                        class="comments-form__input"
+                        name="rating" />
+                      <span class="comments-form__radio">
+                        <div
+                          class="comments-form__star comments-form__star--4"
+                          data-rating="4"></div>
+                      </span>
+                    </label>
+                    <label class="comments-form__label">
+                      <input
+                        type="radio"
+                        class="comments-form__input"
+                        name="rating" />
+                      <span class="comments-form__radio">
+                        <div
+                          class="comments-form__star comments-form__star--5"
+                          data-rating="5"></div>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="comments-form__textbox">
+                    <input
+                      type="text"
+                      class="comments-form__text-input"
+                      placeholder="Your name" />
+                    <input
+                      type="text"
+                      class="comments-form__text-input"
+                      placeholder="E-mail address" />
+                  </div>
+                  <textarea
+                    class="comments-form__textarea"
+                    placeholder="Your text here"></textarea>
+                  <button type="submit" class="btn comments-form__btn">
+                    Leave Review
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="related">
+        <div class="container">
+          <h3 class="title related__title">Related products</h3>
+          <div class="related__items">
+            <div class="product-item">
+              <div class="product-item__img-box">
+                <img
+                  src="./images/product/1.jpg"
+                  alt="product image"
+                  class="product-item__img" />
+              </div>
+              <div class="star" data-rating="4.5"></div>
+              <h4 class="product-item__title">White Polo Men's T-Shirt</h4>
+              <div class="product-item__price">
+                <div class="product-item__price-new">$34.00</div>
+                <div class="product-item__price-old">$27.00</div>
+              </div>
+            </div>
+            <div class="product-item">
+              <div class="product-item__img-box">
+                <img
+                  src="./images/product/1.jpg"
+                  alt="product image"
+                  class="product-item__img" />
+              </div>
+              <div class="star" data-rating="4.5"></div>
+              <h4 class="product-item__title">White Polo Men's T-Shirt</h4>
+              <div class="product-item__price">
+                <div class="product-item__price-new">$34.00</div>
+                <div class="product-item__price-old">$27.00</div>
+              </div>
+            </div>
+            <div class="product-item">
+              <div class="product-item__img-box">
+                <img
+                  src="./images/product/1.jpg"
+                  alt="product image"
+                  class="product-item__img" />
+              </div>
+              <div class="star" data-rating="4.5"></div>
+              <h4 class="product-item__title">White Polo Men's T-Shirt</h4>
+              <div class="product-item__price">
+                <div class="product-item__price-new">$34.00</div>
+                <div class="product-item__price-old">$27.00</div>
+              </div>
+            </div>
+            <div class="product-item">
+              <div class="product-item__img-box">
+                <img
+                  src="./images/product/1.jpg"
+                  alt="product image"
+                  class="product-item__img" />
+              </div>
+              <div class="star" data-rating="4.5"></div>
+              <h4 class="product-item__title">White Polo Men's T-Shirt</h4>
+              <div class="product-item__price">
+                <div class="product-item__price-new">$34.00</div>
+                <div class="product-item__price-old">$27.00</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

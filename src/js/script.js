@@ -1,4 +1,19 @@
 $(function () {
+  const tabs = document.querySelectorAll(".product-tabs__top-item");
+  const tabsContent = document.querySelectorAll(".product-tabs__content-item");
+  tabs.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      tabs.forEach((item) =>
+        item.classList.remove("product-tabs__top-item--active")
+      );
+      tabsContent.forEach((item) =>
+        item.classList.remove("product-tabs__content-item--active")
+      );
+      item.classList.add("product-tabs__top-item--active");
+      tabsContent[index].classList.add("product-tabs__content-item--active");
+    });
+  });
+
   $(".product-slide__thumb").slick({
     asNavFor: ".product-slide__big",
     focusOnSelect: true,
@@ -66,6 +81,67 @@ $(function () {
 
   $(".star").starRating({
     totalStars: 5,
+    starShape: "rounded",
+    starSize: 20,
+    emptyColor: "#ccccce",
+    activeColor: "#ffc35b",
+    useGradient: false,
+    readOnly: true,
+  });
+
+  // $(".comments-form__star").starRating({
+  //   totalStars: 5,
+  //   useFullStars: true,
+  //   starShape: "rounded",
+  //   starSize: 20,
+  //   emptyColor: "#ccccce",
+  //   activeColor: "#ffc35b",
+  //   useGradient: false,
+  //   readOnly: false,
+  // });
+  $(".comments-form__star--1").starRating({
+    totalStars: 1,
+    useFullStars: true,
+    starShape: "rounded",
+    starSize: 20,
+    emptyColor: "#ccccce",
+    activeColor: "#ffc35b",
+    useGradient: false,
+    readOnly: true,
+  });
+  $(".comments-form__star--2").starRating({
+    totalStars: 2,
+    useFullStars: true,
+    starShape: "rounded",
+    starSize: 20,
+    emptyColor: "#ccccce",
+    activeColor: "#ffc35b",
+    useGradient: false,
+    readOnly: true,
+  });
+  $(".comments-form__star--3").starRating({
+    totalStars: 3,
+    useFullStars: true,
+    starShape: "rounded",
+    starSize: 20,
+    emptyColor: "#ccccce",
+    activeColor: "#ffc35b",
+    useGradient: false,
+    readOnly: true,
+  });
+  $(".comments-form__star--4").starRating({
+    totalStars: 4,
+    useFullStars: true,
+    starShape: "rounded",
+    starSize: 20,
+    emptyColor: "#ccccce",
+    activeColor: "#ffc35b",
+    useGradient: false,
+    readOnly: true,
+  });
+  $(".comments-form__star--5").starRating({
+    totalStars: 5,
+    useFullStars: true,
     starShape: "rounded",
     starSize: 20,
     emptyColor: "#ccccce",
