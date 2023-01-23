@@ -90,7 +90,9 @@ function js() {
       "node_modules/jquery/dist/jquery.min.js",
       "node_modules/slick-carousel/slick/slick.min.js",
       "src/js/jquery.star-rating-svg.js",
+      "node_modules/ion-rangeslider/js/ion.rangeSlider.js",
       "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js",
+      "node_modules/jquery-form-styler/dist/jquery.formstyler.js",
       path.src.js,
     ])
       .pipe(concat("main.min.js"))

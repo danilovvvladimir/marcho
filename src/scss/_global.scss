@@ -54,9 +54,119 @@ a {
 .jq-star {
   cursor: default;
 }
+.star {
+  line-height: 1;
+}
 
 .subtitle {
   text-align: center;
   max-width: 570px;
   margin: 0 auto 55px auto;
+}
+
+.breadcrumbs {
+  display: inline-flex;
+  justify-content: center;
+  padding-left: 25px;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url(../images/icons/home-icon.svg);
+    width: 16px;
+    left: 0;
+    top: 4px;
+    height: 16px;
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    color: #727272;
+    @extend %quicksand-500;
+    padding-right: 40px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url(../images/icons/angle-right.svg);
+      width: 9px;
+      height: 10px;
+      right: 15px;
+      top: 9px;
+    }
+    &:last-child {
+      color: $accent;
+      padding-right: 0;
+      &::after {
+        background-image: none;
+      }
+    }
+  }
+  &__link {
+    color: inherit;
+  }
+}
+
+.header--404-page {
+  background-color: $bg;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+  .pagination__list {
+    display: flex;
+    padding: 0 35px;
+  }
+  &__item {
+    padding: 0 15px;
+    span {
+      &:hover {
+        color: $default;
+      }
+    }
+  }
+  &__link {
+    transition: 0.15s all;
+    &:hover {
+      color: $accent;
+    }
+  }
+  &__link--active {
+    color: $accent;
+  }
+  &__arrow {
+    text-transform: uppercase;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      background-image: url(../images/icons/angle-down.svg);
+      background-repeat: no-repeat;
+      top: 42%;
+      // transform: translateY(-50%);
+      width: 10px;
+      height: 5px;
+    }
+    transition: 0.15s all;
+    &:hover {
+      color: $accent;
+    }
+  }
+  &__prev {
+    padding-left: 15px;
+    &::before {
+      left: 0px;
+      transform: rotate(90deg);
+    }
+  }
+  &__next {
+    padding-right: 15px;
+    &::before {
+      right: 0px;
+      transform: rotate(-90deg);
+    }
+  }
 }
